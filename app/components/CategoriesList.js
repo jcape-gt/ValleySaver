@@ -3,8 +3,16 @@ import {FlatList, View, Text} from 'react-native';
 import Category from './Category';
 
 const DATA = [
-  {text: 'hello', id: '1'},
-  {text: 'world', id: '2'},
+  {
+    header: 'All Coupons',
+    description: 'Find local deals in all categories!',
+    id: '1',
+  },
+  {
+    header: 'Auto',
+    description: 'Oil Change, Car Wash, Tires, Repair...',
+    id: '2',
+  },
 ];
 
 const CategoriesList = () => (
@@ -12,7 +20,9 @@ const CategoriesList = () => (
     <Text>Testing</Text>
     <FlatList
       data={DATA}
-      renderItem={({item}) => <Category header={item.text} />}
+      renderItem={({item}) => (
+        <Category header={item.header} text={item.description} />
+      )}
     />
     <Text>Testing</Text>
   </View>
