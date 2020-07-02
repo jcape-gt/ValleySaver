@@ -1,6 +1,6 @@
 import React from 'react';
 import {FlatList, View, StyleSheet} from 'react-native';
-import Category from './Category';
+import CategoryListItem from './CategoryListItem';
 
 const DATA = [
   {
@@ -18,38 +18,38 @@ const DATA = [
   {
     header: 'Restaurants',
     description: 'blah blah blah blah blah blah',
-    iconName: 'silverware',
-    id: '1',
+    iconName: 'utensils',
+    id: '3',
   },
   {
     header: 'Home Improvement',
     description: 'blah blah blah blah blah blah',
     iconName: 'hammer',
-    id: '2',
+    id: '4',
   },
   {
     header: 'Home Services',
     description: 'blah blah blah blah blah blah',
     iconName: 'home',
-    id: '1',
+    id: '5',
   },
   {
     header: 'Retail',
     description: 'blah blah blah blah blah blah',
-    iconName: 'shopping',
-    id: '2',
+    iconName: 'shopping-bag',
+    id: '6',
   },
   {
     header: 'Garden & Landscape',
     description: 'blah blah blah blah blah blah',
     iconName: 'leaf',
-    id: '1',
+    id: '7',
   },
   {
     header: 'Personal Services',
     description: 'blah blah blah blah blah blah',
-    iconName: 'account',
-    id: '2',
+    iconName: 'hands-helping',
+    id: '8',
   },
 ];
 
@@ -57,12 +57,12 @@ const styles = StyleSheet.create({
   listWrapper: {backgroundColor: '#ddd', flex: 1},
 });
 
-const CategoriesList = () => (
+const CategoryList = () => (
   <View style={styles.listWrapper}>
     <FlatList
       data={DATA}
       renderItem={({item}) => (
-        <Category
+        <CategoryListItem
           header={item.header}
           text={item.description}
           icon={item.iconName}
@@ -72,4 +72,4 @@ const CategoriesList = () => (
   </View>
 );
 
-export default CategoriesList;
+export default CategoryList;
