@@ -12,6 +12,9 @@ const Category = ({icon, header, text}) => (
       <Text style={styles.header}>{header}</Text>
       <Text style={styles.description}>{text}</Text>
     </View>
+    <View style={styles.iconWrapper}>
+      <Icon style={styles.icon} name="chevron-right" />
+    </View>
   </View>
 );
 
