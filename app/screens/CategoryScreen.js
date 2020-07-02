@@ -4,37 +4,41 @@ import {View, Image, StyleSheet, Text} from 'react-native';
 import Header from '../components/Header';
 import DealList from '../components/DealList';
 import PropTypes from 'prop-types';
+import {LightText} from '../styles/Typography';
+import {
+  HorizontalContentWrapper,
+  VerticalContentWrapper,
+  FullWrapper,
+} from '../styles/Layout';
+import {CoverImage} from '../styles/Images';
 
 const styles = StyleSheet.create({
   logo: {
+    ...FullWrapper,
     maxHeight: '100%',
     resizeMode: 'contain',
+  },
+  fullWidthRow: {
+    ...HorizontalContentWrapper,
     flex: 1,
   },
-  row: {flex: 1, flexDirection: 'row'},
-  fullWidthRow: {flex: 1, flexDirection: 'row', overflow: 'hidden'},
   throwImage: {
-    height: undefined,
-    width: undefined,
-    resizeMode: 'cover',
+    ...CoverImage,
+    ...FullWrapper,
     aspectRatio: 2,
-    flex: 1,
   },
   page: {
-    flex: 1,
+    ...FullWrapper,
   },
   imageContainer: {
     flex: 3,
   },
   body: {
+    ...VerticalContentWrapper,
     flex: 10,
-    flexDirection: 'column',
   },
   description: {
-    flex: 1,
-    fontSize: 12,
-    fontFamily: 'sans-serif-light',
-    color: '#f6f6f6',
+    ...LightText,
     padding: 20,
   },
 });
