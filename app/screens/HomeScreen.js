@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import CategoryList from '../components/CategoryList';
-import {LightText} from '../styles/Typography';
 import {
   HorizontalContentWrapper,
   VerticalContentWrapper,
@@ -31,9 +31,8 @@ const styles = StyleSheet.create({
     ...VerticalContentWrapper,
     flex: 10,
   },
-  description: {
-    ...LightText,
-    padding: 20,
+  listWrapper: {
+    flex: 7,
   },
 });
 
@@ -47,12 +46,10 @@ const Body = () => (
         />
       </View>
     </View>
-    <View style={{flex: 7}}>
+    <View style={styles.listWrapper}>
       <CategoryList />
     </View>
-    <View style={{flex: 1, backgroundColor: '#26abff'}}>
-      <Text style={styles.description}>Copyright 2020 Verticular LLC</Text>
-    </View>
+    <Footer />
   </View>
 );
 
