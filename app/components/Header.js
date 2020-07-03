@@ -1,25 +1,36 @@
 import React from 'react';
 import {View, Image, StyleSheet} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {Header as HeaderElement} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const Header = () => (
-  <View style={styles.row}>
-    <View style={styles.iconWrapper}>
-      <Icon style={styles.icon} name="menu" />
-    </View>
+const styles = StyleSheet.create({
+  icon: {fontSize: 25},
+  logo: {
+    maxHeight: '100%',
+    resizeMode: 'contain',
+  },
+  logoWrapper: {
+    flex: 1,
+  },
+  body: {
+    backgroundColor: '#ffffff',
+  },
+});
+
+const HeaderIcon = () => <Icon style={styles.icon} name="bars" />;
+
+const HeaderLogo = () => (
+  <View style={styles.logoWrapper}>
     <Image style={styles.logo} source={require('../resources/logo1.png')} />
   </View>
 );
 
-const styles = StyleSheet.create({
-  logo: {
-    maxHeight: '100%',
-    resizeMode: 'contain',
-    flex: 7,
-  },
-  row: {flex: 1, flexDirection: 'row'},
-  icon: {fontSize: 25},
-  iconWrapper: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-});
+const HeaderAttrs = {
+  containerStyle: styles.body,
+  leftComponent: <HeaderIcon />,
+  centerComponent: <HeaderLogo />,
+};
+
+const Header = () => <HeaderElement {...HeaderAttrs} />;
 
 export default Header;

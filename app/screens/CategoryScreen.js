@@ -2,6 +2,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {View, Image, StyleSheet, Text} from 'react-native';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import DealList from '../components/DealList';
 import PropTypes from 'prop-types';
 import {LightText} from '../styles/Typography';
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     flex: 3,
   },
-  body: {
+  mainContent: {
     ...VerticalContentWrapper,
     flex: 10,
   },
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
 });
 
 const Body = ({name}) => (
-  <View style={styles.body}>
+  <View style={FullWrapper}>
     <View style={styles.imageContainer}>
       <View style={styles.fullWidthRow}>
         <Image
@@ -56,20 +57,22 @@ const Body = ({name}) => (
     <View style={{flex: 7}}>
       <DealList />
     </View>
-    <View style={{flex: 1, backgroundColor: '#26abff'}}>
-      <Text style={styles.description}>Copyright 2020 Verticular LLC</Text>
-    </View>
   </View>
 );
 
 const CategoryScreen = ({route}) => {
   const {name} = route.params;
-  console.log('Category Screen');
-  console.log(name);
   return (
     <View style={styles.page}>
-      <Header />
-      <Body name={name} />
+      <View style={{flex: 1}}>
+        <Header />
+      </View>
+      <View style={styles.mainContent}>
+        <Body name={name} />
+      </View>
+      <View style={{flex: 1}}>
+        <Footer />
+      </View>
     </View>
   );
 };

@@ -34,7 +34,7 @@ const DATA = [
     id: '5',
   },
   {
-    header: 'Retail',
+    header: '   Retail',
     description: 'blah blah blah blah blah blah',
     iconName: 'shopping-bag',
     id: '6',

@@ -9,7 +9,7 @@ const Footer = () => (
 );
 
 const styles = StyleSheet.create({
-  body: {flex: 1, backgroundColor: '#26abff'},
+  body: {backgroundColor: '#26abff', flex: 1},
   description: {
     ...LightText,
     padding: 20,

@@ -9,7 +9,9 @@ const Stack = createStackNavigator();
 
 const App = () => (
   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{headerShown: false}}>
       <Stack.Screen name="Main" component={HomeScreen} />
       <Stack.Screen name="Category" component={CategoryScreen} />
     </Stack.Navigator>
