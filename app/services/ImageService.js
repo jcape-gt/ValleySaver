@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image} from 'react-native';
+import {ImageBackground, View} from 'react-native';
 import PropTypes from 'prop-types';
 
 export const ImageProvider = {
@@ -10,7 +10,11 @@ export const ImageProvider = {
   },
 };
 
-const BoundImage = ({require, ...props}) => <Image {...require} {...props} />;
+const BoundImage = ({require, ...props}) => (
+  <View style={{flex: 1}}>
+    <ImageBackground {...require} {...props} />
+  </View>
+);
 
 BoundImage.propTypes = {
   require: PropTypes.shape({

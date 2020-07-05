@@ -1,8 +1,4 @@
-import React from 'react';
-import {FlatList, View, StyleSheet} from 'react-native';
-import CategoryListItem from './CategoryListItem';
-
-const DATA = [
+export const DATA = [
   {
     header: 'All Coupons',
     description: 'Find local deals in all categories!',
@@ -52,24 +48,3 @@ const DATA = [
     id: '8',
   },
 ];
-
-const styles = StyleSheet.create({
-  listWrapper: {backgroundColor: '#ddd', flex: 1},
-});
-
-const CategoryList = () => (
-  <View style={styles.listWrapper}>
-    <FlatList
-      data={DATA}
-      renderItem={({item}) => (
-        <CategoryListItem
-          header={item.header}
-          text={item.description}
-          icon={item.iconName}
-        />
-      )}
-    />
-  </View>
-);
-
-export default CategoryList;
