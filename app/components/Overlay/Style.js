@@ -8,10 +8,6 @@ const Style = StyleSheet.create({
     bottom: 0,
     left: 0,
   },
-  overlayy: {
-    backgroundColor: 'black',
-    opacity: 0.5,
-  },
   wrapper: {flex: 1},
 });
 

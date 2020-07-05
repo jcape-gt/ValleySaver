@@ -9,7 +9,7 @@ import Style from './Style';
 
 const CategoryListItem = ({icon, header, text}) => {
   const navigation = useNavigation();
-
+  
   return (
     <ListItem
       title={header}
@@ -18,8 +18,7 @@ const CategoryListItem = ({icon, header, text}) => {
       bottomDivider
       chevron
       onPress={() => {
-        console.log('hello');
-        navigation.navigate('Category', {name: text});
+        navigation.navigate('Category', {name: header});
       }}
     />
   );

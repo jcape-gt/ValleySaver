@@ -27,15 +27,6 @@ const Style = StyleSheet.create({
     flex: 7,
   },
   overlay: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    backgroundColor: 'black',
-    opacity: 0.5,
-  },
-  overlayy: {
     backgroundColor: 'black',
     opacity: 0.5,
   },

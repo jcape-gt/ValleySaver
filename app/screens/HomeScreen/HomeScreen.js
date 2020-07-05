@@ -9,12 +9,19 @@ import {ImageProvider} from '../../services/ImageService';
 import Overlay from '../../components/Overlay';
 import Style from './Style';
 
+const OverlayContent = () => (
+  <View style={{flex: 1, justifyContent: 'center', padding: 20}}>
+    <Text style={{color: 'white', fontSize: 25}}>Great deals on </Text>
+    <Text style={{color: 'white', fontSize: 25}}>the things you love</Text>
+  </View>
+);
+
 const Body = () => (
   <View style={Style.body}>
     <View style={Style.imageContainer}>
       <Image source={ImageProvider.throwImages.home} style={Style.image} />
-      <Overlay style={Style.overlayy}>
-        <Text style={{flex: 1, color: 'white', opacity: 1}}>Hello</Text>
+      <Overlay style={Style.overlay}>
+        <OverlayContent />
       </Overlay>
     </View>
     <View style={Style.listWrapper}>
