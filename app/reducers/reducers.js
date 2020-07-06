@@ -1,11 +1,10 @@
-import {combineReducers} from 'redux';
 import {REQUEST_CATEGORIES, RECEIVE_CATEGORIES} from '../actions/actions';
 
-function posts(
+function Categories(
   state = {
     isFetching: false,
     didInvalidate: false,
-    items: [],
+    categories: [],
   },
   action,
 ) {
@@ -19,7 +18,7 @@ function posts(
         ...state,
         isFetching: true,
         didInvalidate: false,
-        items: action.posts,
+        categories: action.categories,
         lastUpdate: action.receivedAt,
       };
     default:
@@ -27,4 +26,4 @@ function posts(
   }
 }
 
-export default posts;
+export default Categories;

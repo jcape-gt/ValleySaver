@@ -10,14 +10,16 @@ function requestCategories() {
 }
 
 function receiveCategories(json) {
+  console.log(json);
+  console.log(json.results.children);
   return {
     type: RECEIVE_CATEGORIES,
-    posts: json.data.children.map((child) => child.data),
+    categories: json.results.map((child) => child.name),
     receivedAt: Date.now(),
   };
 }
 
-export function fetchPosts() {
+export function fetchCategories() {
   // Thunk middleware knows how to handle functions.
   // It passes the dispatch method as an argument to the function,
   // thus making it able to dispatch actions itself.
@@ -34,7 +36,7 @@ export function fetchPosts() {
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
 
-    return fetch('https://swapi.dev/api/people/1/')
+    return fetch('https://swapi.dev/api/people/')
       .then(
         (response) => response.json(),
         // Do not use catch, because errors occured during rendering
