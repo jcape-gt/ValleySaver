@@ -3,7 +3,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import CategoryList from '../../components/CategoryList';
+import CategoryList from '../../containers/CategoryList';
 import Image from '../../components/Image';
 import {ImageProvider} from '../../services/ImageService';
 import Overlay from '../../components/Overlay';
