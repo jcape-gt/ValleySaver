@@ -1,0 +1,20 @@
+{
+	"api": {
+		"valleysaver": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "dev-valleysaver",
+							"apiKeyExpirationDays": "365"
+						}
+					}
+				}
+			}
+		}
+	}
+}

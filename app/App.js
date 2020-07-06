@@ -11,6 +11,17 @@ import HomeScreen from './screens/HomeScreen';
 import CategoryScreen from './screens/CategoryScreen';
 import {fetchCategories} from './actions/actions';
 import Categories from './reducers/reducers';
+import {API, graphqlOperation} from 'aws-amplify';
+import {listCategorys} from './graphql/queries';
+import Amplify from 'aws-amplify';
+import awsconfig from './aws-exports';
+
+Amplify.configure(awsconfig);
+
+API.graphql(graphqlOperation(listCategorys)).then((response) => {
+  console.log('graphql test response:');
+  console.log(response);
+});
 
 const Stack = createStackNavigator();
 // const loggerMiddleware = createLogger();

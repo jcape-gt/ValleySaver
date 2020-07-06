@@ -8,7 +8,6 @@ function Categories(
   },
   action,
 ) {
-  console.log('hello');
   switch (action.type) {
     case REQUEST_CATEGORIES:
       return {...state, isFetching: true, didInvalidate: false};

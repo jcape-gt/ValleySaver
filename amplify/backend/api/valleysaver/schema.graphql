@@ -1,0 +1,21 @@
+type Category @model {
+  id: ID!
+  name: String!
+  description: String!
+  deals: [Deal] @connection(keyName: "byCategory", fields: ["id"])
+}
+
+type Deal @model @key(name: "byCategory", fields: ["categoryID"]) @key(name: "byCustomer", fields: ["customerID"]) {
+  id: ID!
+  title: String!
+  categoryID: ID!
+  category: Category! @connection(fields: ["categoryID"])
+  customerID: ID!
+  customer: Customer! @connection(fields: ["customerID"])
+}
+
+type Customer @model {
+  id: ID!
+  name: String!
+  address: String!
+}

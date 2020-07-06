@@ -1,0 +1,12 @@
+projects:
+  valleysaver:
+    schemaPath: app/graphql/schema.json
+    includes:
+      - app/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: flow
+        generatedFileName: app/API.js
+        docsFilePath: app/graphql
