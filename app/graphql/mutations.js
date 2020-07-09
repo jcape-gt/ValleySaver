@@ -9,6 +9,7 @@ export const createCategory = /* GraphQL */ `
     createCategory(input: $input, condition: $condition) {
       id
       name
+      order
       description
       deals {
         items {
@@ -16,6 +17,8 @@ export const createCategory = /* GraphQL */ `
           title
           categoryID
           customerID
+          startDateTime
+          endDateTime
           createdAt
           updatedAt
         }
@@ -34,6 +37,7 @@ export const updateCategory = /* GraphQL */ `
     updateCategory(input: $input, condition: $condition) {
       id
       name
+      order
       description
       deals {
         items {
@@ -41,6 +45,8 @@ export const updateCategory = /* GraphQL */ `
           title
           categoryID
           customerID
+          startDateTime
+          endDateTime
           createdAt
           updatedAt
         }
@@ -59,6 +65,7 @@ export const deleteCategory = /* GraphQL */ `
     deleteCategory(input: $input, condition: $condition) {
       id
       name
+      order
       description
       deals {
         items {
@@ -66,11 +73,91 @@ export const deleteCategory = /* GraphQL */ `
           title
           categoryID
           customerID
+          startDateTime
+          endDateTime
           createdAt
           updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createCategoryDisplay = /* GraphQL */ `
+  mutation CreateCategoryDisplay(
+    $input: CreateCategoryDisplayInput!
+    $condition: ModelCategoryDisplayConditionInput
+  ) {
+    createCategoryDisplay(input: $input, condition: $condition) {
+      id
+      categoryID
+      category {
+        id
+        name
+        order
+        description
+        deals {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      order
+      icon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateCategoryDisplay = /* GraphQL */ `
+  mutation UpdateCategoryDisplay(
+    $input: UpdateCategoryDisplayInput!
+    $condition: ModelCategoryDisplayConditionInput
+  ) {
+    updateCategoryDisplay(input: $input, condition: $condition) {
+      id
+      categoryID
+      category {
+        id
+        name
+        order
+        description
+        deals {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      order
+      icon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteCategoryDisplay = /* GraphQL */ `
+  mutation DeleteCategoryDisplay(
+    $input: DeleteCategoryDisplayInput!
+    $condition: ModelCategoryDisplayConditionInput
+  ) {
+    deleteCategoryDisplay(input: $input, condition: $condition) {
+      id
+      categoryID
+      category {
+        id
+        name
+        order
+        description
+        deals {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      order
+      icon
       createdAt
       updatedAt
     }
@@ -88,6 +175,7 @@ export const createDeal = /* GraphQL */ `
       category {
         id
         name
+        order
         description
         deals {
           nextToken
@@ -103,6 +191,8 @@ export const createDeal = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      startDateTime
+      endDateTime
       createdAt
       updatedAt
     }
@@ -120,6 +210,7 @@ export const updateDeal = /* GraphQL */ `
       category {
         id
         name
+        order
         description
         deals {
           nextToken
@@ -135,6 +226,8 @@ export const updateDeal = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      startDateTime
+      endDateTime
       createdAt
       updatedAt
     }
@@ -152,6 +245,7 @@ export const deleteDeal = /* GraphQL */ `
       category {
         id
         name
+        order
         description
         deals {
           nextToken
@@ -167,6 +261,8 @@ export const deleteDeal = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      startDateTime
+      endDateTime
       createdAt
       updatedAt
     }

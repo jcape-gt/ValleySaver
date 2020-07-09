@@ -10,3 +10,6 @@ projects:
         codeGenTarget: flow
         generatedFileName: app/API.js
         docsFilePath: app/graphql
+extensions:
+  amplify:
+    version: 3

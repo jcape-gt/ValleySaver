@@ -6,6 +6,7 @@ export const onCreateCategory = /* GraphQL */ `
     onCreateCategory {
       id
       name
+      order
       description
       deals {
         items {
@@ -13,6 +14,8 @@ export const onCreateCategory = /* GraphQL */ `
           title
           categoryID
           customerID
+          startDateTime
+          endDateTime
           createdAt
           updatedAt
         }
@@ -28,6 +31,7 @@ export const onUpdateCategory = /* GraphQL */ `
     onUpdateCategory {
       id
       name
+      order
       description
       deals {
         items {
@@ -35,6 +39,8 @@ export const onUpdateCategory = /* GraphQL */ `
           title
           categoryID
           customerID
+          startDateTime
+          endDateTime
           createdAt
           updatedAt
         }
@@ -50,6 +56,7 @@ export const onDeleteCategory = /* GraphQL */ `
     onDeleteCategory {
       id
       name
+      order
       description
       deals {
         items {
@@ -57,11 +64,82 @@ export const onDeleteCategory = /* GraphQL */ `
           title
           categoryID
           customerID
+          startDateTime
+          endDateTime
           createdAt
           updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateCategoryDisplay = /* GraphQL */ `
+  subscription OnCreateCategoryDisplay {
+    onCreateCategoryDisplay {
+      id
+      categoryID
+      category {
+        id
+        name
+        order
+        description
+        deals {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      order
+      icon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateCategoryDisplay = /* GraphQL */ `
+  subscription OnUpdateCategoryDisplay {
+    onUpdateCategoryDisplay {
+      id
+      categoryID
+      category {
+        id
+        name
+        order
+        description
+        deals {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      order
+      icon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteCategoryDisplay = /* GraphQL */ `
+  subscription OnDeleteCategoryDisplay {
+    onDeleteCategoryDisplay {
+      id
+      categoryID
+      category {
+        id
+        name
+        order
+        description
+        deals {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      order
+      icon
       createdAt
       updatedAt
     }
@@ -76,6 +154,7 @@ export const onCreateDeal = /* GraphQL */ `
       category {
         id
         name
+        order
         description
         deals {
           nextToken
@@ -91,6 +170,8 @@ export const onCreateDeal = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      startDateTime
+      endDateTime
       createdAt
       updatedAt
     }
@@ -105,6 +186,7 @@ export const onUpdateDeal = /* GraphQL */ `
       category {
         id
         name
+        order
         description
         deals {
           nextToken
@@ -120,6 +202,8 @@ export const onUpdateDeal = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      startDateTime
+      endDateTime
       createdAt
       updatedAt
     }
@@ -134,6 +218,7 @@ export const onDeleteDeal = /* GraphQL */ `
       category {
         id
         name
+        order
         description
         deals {
           nextToken
@@ -149,6 +234,8 @@ export const onDeleteDeal = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      startDateTime
+      endDateTime
       createdAt
       updatedAt
     }
