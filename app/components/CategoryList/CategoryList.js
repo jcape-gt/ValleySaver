@@ -3,18 +3,17 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {FlatList, View} from 'react-native';
 import CategoryListItem from '../CategoryListItem';
-import {DATA} from './Default';
 import Style from './Style';
 
-const CategoryList = () => (
+const CategoryList = ({categories}) => (
   <View style={Style.listWrapper}>
     <FlatList
-      data={DATA}
+      data={categories}
       renderItem={({item}) => (
         <CategoryListItem
-          header={item.header}
+          header={item.name}
           text={item.description}
-          icon={item.iconName}
+          icon={item.icon_class}
         />
       )}
     />

@@ -1,22 +1,24 @@
-import {REQUEST_CATEGORIES, RECEIVE_CATEGORIES} from '../actions/actions';
+import {
+  FETCH_CATEGORIES_BEGIN,
+  FETCH_CATEGORIES_SUCCESS,
+} from '../actions/categories';
 
-function Categories(
-  state = {
-    isFetching: false,
-    didInvalidate: false,
-    categories: [],
-  },
-  action,
-) {
+const defaultState = {
+  isFetching: false,
+  didInvalidate: false,
+  categories: [],
+};
+
+function Categories(state = defaultState, action) {
   console.log('hello');
   switch (action.type) {
-    case REQUEST_CATEGORIES:
+    case FETCH_CATEGORIES_BEGIN:
       return {...state, isFetching: true, didInvalidate: false};
 
-    case RECEIVE_CATEGORIES:
+    case FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
-        isFetching: true,
+        isFetching: false,
         didInvalidate: false,
         categories: action.categories,
         lastUpdate: action.receivedAt,

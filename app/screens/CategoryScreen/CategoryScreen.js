@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -16,7 +16,7 @@ const OverlayContent = ({name}) => (
   </View>
 );
 
-const Body = ({name = 'Category'}) => (
+const CategoryBody = ({name = 'Category'}) => (
   <View style={Style.body}>
     <View style={Style.imageContainer}>
       <Image source={ImageProvider.throwImages.home} style={Style.image} />
@@ -27,11 +27,27 @@ const Body = ({name = 'Category'}) => (
     <View style={Style.listWrapper}>
       <DealList />
     </View>
-    <View style={Style.fullWidthRow}>
-      <Footer />
-    </View>
   </View>
 );
+
+class CategoryComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.name,
+    };
+  }
+
+  componentDidMount() {
+    //this.setState({name: 'test'});
+    console.log('CategoryLayout mounted');
+  }
+
+  render() {
+    const {name} = this.props;
+    return <CategoryBody name={name} />;
+  }
+}
 
 const CategoryScreen = ({route}) => {
   console.log('name');
@@ -41,16 +57,10 @@ const CategoryScreen = ({route}) => {
   return (
     <View style={Style.page}>
       <Header />
-      <Body name={name} />
+      <CategoryComponent name={name} />
+      <Footer />
     </View>
   );
 };
-
-// const CategoryScreen = ({name}) => (
-//   <View style={Style.page}>
-//     <Header />
-//     <Body name={name} />
-//   </View>
-// );
 
 export default CategoryScreen;

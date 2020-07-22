@@ -9,7 +9,6 @@ import Style from './Style';
 
 const CategoryListItem = ({icon, header, text}) => {
   const navigation = useNavigation();
-  
   return (
     <ListItem
       title={header}
