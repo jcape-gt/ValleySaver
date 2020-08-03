@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ListItem} from 'react-native-elements';
 import Style from './Style';
 
-const CategoryListItem = ({icon, header, text}) => {
+const CategoryListItem = ({icon, header, text, id}) => {
   const navigation = useNavigation();
   return (
     <ListItem
@@ -17,7 +17,7 @@ const CategoryListItem = ({icon, header, text}) => {
       bottomDivider
       chevron
       onPress={() => {
-        navigation.navigate('Category', {name: header});
+        navigation.navigate('Category', {name: header, id: id});
       }}
     />
   );
@@ -27,6 +27,7 @@ CategoryListItem.propTypes = {
   icon: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   header: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default CategoryListItem;

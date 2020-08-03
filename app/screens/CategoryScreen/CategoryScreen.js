@@ -8,6 +8,7 @@ import Image from '../../components/Image';
 import {ImageProvider} from '../../services/ImageService';
 import Overlay from '../../components/Overlay';
 import Style from './Style';
+import {connect} from 'react-redux';
 
 const OverlayContent = ({name}) => (
   <View style={{flex: 1, justifyContent: 'center', padding: 20}}>
@@ -35,6 +36,7 @@ class CategoryComponent extends Component {
     super(props);
     this.state = {
       name: this.props.name,
+      id: this.props.id,
     };
   }
 
@@ -44,23 +46,28 @@ class CategoryComponent extends Component {
   }
 
   render() {
-    const {name} = this.props;
-    return <CategoryBody name={name} />;
+    const {name, id} = this.props;
+    return <CategoryBody name={name} id={id} />;
   }
 }
 
 const CategoryScreen = ({route}) => {
-  console.log('name');
-  console.log(name);
-  const {name} = route.params;
+  const {name, id} = route.params;
+  console.log(`name: ${name}, id: ${id}`);
 
   return (
     <View style={Style.page}>
       <Header />
-      <CategoryComponent name={name} />
+      <CategoryComponent name={name} id={id} />
       <Footer />
     </View>
   );
 };
 
-export default CategoryScreen;
+const mapStateToProps = (state) => {
+  return {
+    deals: state.deals,
+  };
+};
+
+export default connect(mapStateToProps, null)(CategoryScreen);

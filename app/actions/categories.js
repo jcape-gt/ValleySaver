@@ -1,7 +1,7 @@
 import fetch from 'cross-fetch';
 
-export const FETCH_CATEGORIES_BEGIN = 'REQUEST_CATEGORIES';
-export const FETCH_CATEGORIES_SUCCESS = 'RECEIVE_CATEGORIES';
+export const FETCH_CATEGORIES_BEGIN = 'FETCH_CATEGORIES_BEGIN';
+export const FETCH_CATEGORIES_SUCCESS = 'FETCH_CATEGORIES_SUCCESS';
 // TODO: add failure action
 
 function requestCategories() {
@@ -11,10 +11,9 @@ function requestCategories() {
 }
 
 function receiveCategories(json) {
-  console.log(json);
   return {
     type: FETCH_CATEGORIES_SUCCESS,
-    categories: json, //.map((child) => child.name),
+    items: json,
     receivedAt: Date.now(),
   };
 }
@@ -28,6 +27,7 @@ export function fetchCategories() {
     // First dispatch: the app state is updated to inform
     // that the API call is starting.
 
+    console.log('fetching categories');
     dispatch(requestCategories());
 
     // The function called by the thunk middleware can return a value,

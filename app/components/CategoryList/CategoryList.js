@@ -14,6 +14,7 @@ const CategoryList = ({categories}) => (
           header={item.name}
           text={item.description}
           icon={item.icon_class}
+          id={item.id}
         />
       )}
     />

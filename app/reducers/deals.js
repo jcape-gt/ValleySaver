@@ -1,7 +1,4 @@
-import {
-  FETCH_CATEGORIES_BEGIN,
-  FETCH_CATEGORIES_SUCCESS,
-} from '../actions/categories';
+import {FETCH_DEALS_BEGIN, FETCH_DEALS_SUCCESS} from '../actions/deals';
 
 const defaultState = {
   isFetching: false,
@@ -9,13 +6,12 @@ const defaultState = {
   items: [],
 };
 
-function Categories(state = defaultState, action) {
-  console.log('hello');
+function Deals(state = defaultState, action) {
   switch (action.type) {
-    case FETCH_CATEGORIES_BEGIN:
+    case FETCH_DEALS_BEGIN:
       return {...state, isFetching: true, didInvalidate: false};
 
-    case FETCH_CATEGORIES_SUCCESS:
+    case FETCH_DEALS_SUCCESS:
       return {
         ...state,
         isFetching: false,
@@ -28,4 +24,4 @@ function Categories(state = defaultState, action) {
   }
 }
 
-export default Categories;
+export default Deals;

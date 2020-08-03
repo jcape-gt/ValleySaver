@@ -1,19 +1,21 @@
 import fetch from 'cross-fetch';
 
-export const GET_DEALS_REQUEST = 'GET_DEALS_REQUEST';
-export const GET_DEALS_RESPONSE = 'GET_DEALS_RESPONSE';
+export const FETCH_DEALS_BEGIN = 'FETCH_DEALS_BEGIN';
+export const FETCH_DEALS_SUCCESS = 'FETCH_DEALS_SUCCESS';
+
+const url = 'https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev/deal';
 
 function getDealsRequest() {
   return {
-    type: GET_DEALS_REQUEST,
+    type: FETCH_DEALS_BEGIN,
   };
 }
 
 function getDealsResponse(json) {
   console.log(json);
   return {
-    type: GET_DEALS_RESPONSE,
-    categories: json.results.map((child) => child.name),
+    type: FETCH_DEALS_SUCCESS,
+    items: json,
     receivedAt: Date.now(),
   };
 }
@@ -35,7 +37,7 @@ export function getDeals() {
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
 
-    return fetch('https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev/deal')
+    return fetch(url)
       .then(
         (response) => response.json(),
         // Do not use catch, because errors occured during rendering

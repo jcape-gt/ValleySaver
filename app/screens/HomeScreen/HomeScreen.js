@@ -10,7 +10,6 @@ import Overlay from '../../components/Overlay';
 import Style from './Style';
 import {fetchCategories} from '../../actions/categories';
 import {connect} from 'react-redux';
-
 import {DATA} from '../../components/CategoryList/Default';
 
 const OverlayContent = () => (
@@ -34,33 +33,12 @@ const HomeBody = ({categories = DATA}) => (
   </View>
 );
 
-class HomeComponent extends Component {
-  constructor(props) {
-    super(props);
-
-    console.log('HomeComponent props:');
-    console.log(props);
-  }
-
-  componentDidMount() {
-    console.log('CategoryLayout mounted');
-    console.log('CategoryLayout mounted2');
-  }
-
-  render() {
-    const {categories} = this.props;
-    return <HomeBody categories={categories.categories} />;
-  }
-}
-
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    //this.setState({name: 'test'});
-    console.log('CategoryScreen mounted');
     this.props.dispatch(fetchCategories());
   }
 
@@ -69,31 +47,12 @@ class HomeScreen extends Component {
     return (
       <View style={Style.page}>
         <Header />
-        <HomeComponent categories={categories} />
+        <HomeBody categories={categories.items} />
         <Footer />
       </View>
     );
   }
 }
-
-// const HomeScreen = () => (
-//   <View style={Style.page}>
-//     <Header />
-//     <HomeComponent categories={DATA} />
-//     <Footer />
-//   </View>
-// );
-
-// function mapStateToProps(state) {
-// }
-
-// Set the necessary props for the wrapped component (Link)
-// based on the current state of the Redux store
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     active: ownProps.filter === state.visibiltyFilter,
-//   };
-// };
 
 const mapStateToProps = (state) => {
   return {
@@ -101,5 +60,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-// export default HomeScreen;
 export default connect(mapStateToProps, null)(HomeScreen);

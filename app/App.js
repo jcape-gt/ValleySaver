@@ -9,12 +9,12 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import CategoryScreen from './screens/CategoryScreen';
-import {fetchCategories} from './actions/categories';
 import rootReducer from './reducers/rootReducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
 const Stack = createStackNavigator();
 // const loggerMiddleware = createLogger();
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(
@@ -24,8 +24,6 @@ const store = createStore(
     ),
   ),
 );
-
-store.dispatch(fetchCategories()).then(() => console.log(store.getState()));
 
 const App = () => (
   <Provider store={store}>
