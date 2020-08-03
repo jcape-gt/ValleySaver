@@ -9,31 +9,21 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import CategoryScreen from './screens/CategoryScreen';
-import {fetchCategories} from './actions/actions';
-import Categories from './reducers/reducers';
-import {API, graphqlOperation} from 'aws-amplify';
-import {listCategorys} from './graphql/queries';
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports';
-
-Amplify.configure(awsconfig);
-
-API.graphql(graphqlOperation(listCategorys)).then((response) => {
-  console.log('graphql test response:');
-  console.log(response);
-});
+import rootReducer from './reducers/rootReducer';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const Stack = createStackNavigator();
 // const loggerMiddleware = createLogger();
+
 const store = createStore(
-  Categories,
-  applyMiddleware(
-    thunkMiddleware, // lets us dispatch() functions
-    // loggerMiddleware, // neat middleware that logs actions
+  rootReducer,
+  composeWithDevTools(
+    applyMiddleware(
+      thunkMiddleware, // lets us dispatch() functions
+      // loggerMiddleware, // neat middleware that logs actions
+    ),
   ),
 );
-
-store.dispatch(fetchCategories()).then(() => console.log(store.getState()));
 
 const App = () => (
   <Provider store={store}>

@@ -1,5 +1,5 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -8,6 +8,7 @@ import Image from '../../components/Image';
 import {ImageProvider} from '../../services/ImageService';
 import Overlay from '../../components/Overlay';
 import Style from './Style';
+import {connect} from 'react-redux';
 
 const OverlayContent = ({name}) => (
   <View style={{flex: 1, justifyContent: 'center', padding: 20}}>
@@ -16,7 +17,7 @@ const OverlayContent = ({name}) => (
   </View>
 );
 
-const Body = ({name = 'Category'}) => (
+const CategoryBody = ({name = 'Category'}) => (
   <View style={Style.body}>
     <View style={Style.imageContainer}>
       <Image source={ImageProvider.throwImages.home} style={Style.image} />
@@ -27,30 +28,46 @@ const Body = ({name = 'Category'}) => (
     <View style={Style.listWrapper}>
       <DealList />
     </View>
-    <View style={Style.fullWidthRow}>
-      <Footer />
-    </View>
   </View>
 );
 
+class CategoryComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.name,
+      id: this.props.id,
+    };
+  }
+
+  componentDidMount() {
+    //this.setState({name: 'test'});
+    console.log('CategoryLayout mounted');
+  }
+
+  render() {
+    const {name, id} = this.props;
+    return <CategoryBody name={name} id={id} />;
+  }
+}
+
 const CategoryScreen = ({route}) => {
-  console.log('name');
-  console.log(name);
-  const {name} = route.params;
+  const {name, id} = route.params;
+  console.log(`name: ${name}, id: ${id}`);
 
   return (
     <View style={Style.page}>
       <Header />
-      <Body name={name} />
+      <CategoryComponent name={name} id={id} />
+      <Footer />
     </View>
   );
 };
 
-// const CategoryScreen = ({name}) => (
-//   <View style={Style.page}>
-//     <Header />
-//     <Body name={name} />
-//   </View>
-// );
+const mapStateToProps = (state) => {
+  return {
+    deals: state.deals,
+  };
+};
 
-export default CategoryScreen;
+export default connect(mapStateToProps, null)(CategoryScreen);

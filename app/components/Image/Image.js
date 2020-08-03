@@ -15,7 +15,7 @@ const show = (a, b) => {
 
 const Image = ({source, children, ...props}) => (
   <View style={Style.fullWidthRow}>
-    <BoundImage require={source} style={{...Style.throwImage, ...props.style}}>
+    <BoundImage require={source} style={show(Style.throwImage, props.style)}>
       {children}
     </BoundImage>
   </View>
