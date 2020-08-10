@@ -4,12 +4,12 @@ import DealListItem from '../DealListItem';
 import Style from './Style';
 import {DATA} from './Default';
 
-const DealList = () => (
+const DealList = ({deals = DATA}) => (
   <View style={Style.listWrapper}>
     <FlatList
-      data={DATA}
+      data={deals}
       renderItem={({item}) => (
-        <DealListItem header={item.header} text={item.description} />
+        <DealListItem header={item.name} text={item.address} />
       )}
     />
   </View>

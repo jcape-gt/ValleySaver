@@ -9,6 +9,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './screens/HomeScreen';
 import CategoryScreen from './screens/CategoryScreen';
+import ImageScreen from './screens/ImageScreen';
 import rootReducer from './reducers/rootReducer';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
@@ -33,6 +34,7 @@ const App = () => (
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Main" component={HomeScreen} />
         <Stack.Screen name="Category" component={CategoryScreen} />
+        <Stack.Screen name="Image" component={ImageScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>

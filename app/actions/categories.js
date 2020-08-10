@@ -26,8 +26,6 @@ export function fetchCategories() {
   return function (dispatch) {
     // First dispatch: the app state is updated to inform
     // that the API call is starting.
-
-    console.log('fetching categories');
     dispatch(requestCategories());
 
     // The function called by the thunk middleware can return a value,
@@ -36,7 +34,9 @@ export function fetchCategories() {
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
 
-    return fetch('https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev/category')
+    return fetch(
+      'https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev/category',
+    )
       .then(
         (response) => response.json(),
         // Do not use catch, because errors occured during rendering
@@ -46,7 +46,9 @@ export function fetchCategories() {
       .then((json) =>
         // We can dispatch many times!
         // Here, we update the app state with the results of the API call.
-        dispatch(receiveCategories(json)),
+        {
+          return dispatch(receiveCategories(json));
+        },
       );
   };
 }

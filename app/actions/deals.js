@@ -3,7 +3,7 @@ import fetch from 'cross-fetch';
 export const FETCH_DEALS_BEGIN = 'FETCH_DEALS_BEGIN';
 export const FETCH_DEALS_SUCCESS = 'FETCH_DEALS_SUCCESS';
 
-const url = 'https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev/deal';
+const baseUrl = 'https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev';
 
 function getDealsRequest() {
   return {
@@ -20,7 +20,7 @@ function getDealsResponse(json) {
   };
 }
 
-export function getDeals() {
+export function fetchDeals(categoryId) {
   // Thunk middleware knows how to handle functions.
   // It passes the dispatch method as an argument to the function,
   // thus making it able to dispatch actions itself.
@@ -37,7 +37,7 @@ export function getDeals() {
     // In this case, we return a promise to wait for.
     // This is not required by thunk middleware, but it is convenient for us.
 
-    return fetch(url)
+    return fetch(`${baseUrl}/category/${categoryId}/deal`)
       .then(
         (response) => response.json(),
         // Do not use catch, because errors occured during rendering
@@ -47,7 +47,7 @@ export function getDeals() {
       .then((json) =>
         // We can dispatch many times!
         // Here, we update the app state with the results of the API call.
-        dispatch(getDealsResponse(json)),
+        dispatch(getDealsResponse(json[0])),
       );
   };
 }
