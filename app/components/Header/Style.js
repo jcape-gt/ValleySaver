@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native';
 
 const Style = StyleSheet.create({
-  icon: {fontSize: 25},
+  icon: {fontSize: 20},
   logo: {
     maxHeight: '100%',
     resizeMode: 'contain',

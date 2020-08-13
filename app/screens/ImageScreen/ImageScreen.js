@@ -1,21 +1,71 @@
 import 'react-native-gesture-handler';
 import React, {Component} from 'react';
-import {View} from 'react-native';
-import Footer from '../../components/Footer';
+import {View, Text} from 'react-native';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import Image from '../../components/Image';
-import {ImageProvider} from '../../services/ImageService';
 import Style from './Style';
 import {connect} from 'react-redux';
-import {fetchDeals} from '../../actions/deals';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const ImageBody = () => (
-  <View style={Style.body}>
-    <View style={Style.imageContainer}>
-      <Image source={ImageProvider.throwImages.home} style={Style.image} />
+const HeaderActions = () => (
+  <View
+    style={{
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginRight: 5,
+      }}>
+      <Icon style={Style.icon} name="phone" />
+      <Text style={{fontSize: 8}}>Call</Text>
+    </View>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginRight: 5,
+      }}>
+      <Icon style={Style.icon} name="map-marker-alt" />
+      <Text style={{fontSize: 8}}>Map</Text>
+    </View>
+    <View
+      style={{
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginRight: 5,
+      }}>
+      <Icon style={Style.icon} name="shopping-cart" />
+      <Text style={{fontSize: 8}}>Use</Text>
     </View>
   </View>
 );
+
+const ImageBody = ({deal}) => {
+  console.log(deal);
+
+  return (
+    <View style={Style.body}>
+      <View style={Style.imageContainer}>
+        <Image
+          source={{
+            uri:
+              `https://q5dfc5aq5b.execute-api.us-east-1.amazonaws.com/dev/deal/${deal.id}/image`,
+          }}
+          style={{height: 100, width: 100}}
+        />
+      </View>
+    </View>
+  );
+};
 
 class ImageScreen extends Component {
   constructor(props) {
@@ -28,10 +78,11 @@ class ImageScreen extends Component {
   }
 
   render() {
+    const {deal} = this.props.route.params;
     return (
       <View style={Style.page}>
-        <Header />
-        <ImageBody />
+        <Header rightComponent={<HeaderActions />} />
+        <ImageBody deal={deal} />
         <Footer />
       </View>
     );

@@ -18,6 +18,8 @@ const HeaderAttrs = {
   centerComponent: <HeaderLogo />,
 };
 
-const Header = () => <HeaderElement {...HeaderAttrs} />;
+const Header = ({rightComponent}) => (
+  <HeaderElement {...HeaderAttrs} rightComponent={rightComponent} />
+);
 
 export default Header;

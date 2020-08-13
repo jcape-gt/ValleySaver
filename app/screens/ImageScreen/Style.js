@@ -17,7 +17,7 @@ const Style = StyleSheet.create({
     flex: 3,
   },
   image: {
-    // aspectRatio: 2,
+    aspectRatio: 2,
   },
   body: {
     ...VerticalContentWrapper,

@@ -3,25 +3,24 @@ import PropTypes from 'prop-types';
 import {ListItem} from 'react-native-elements';
 import {useNavigation} from '@react-navigation/native';
 
-const DealListItem = ({header, text}) => {
+const DealListItem = ({deal}) => {
   const navigation = useNavigation();
 
   return (
     <ListItem
-      title={header}
-      subtitle={text}
+      title={deal.name}
+      subtitle={deal.address}
       bottomDivider
       chevron
       onPress={() => {
-        navigation.navigate('Image');
+        navigation.navigate('Image', {deal: deal});
       }}
     />
   );
 };
 
 DealListItem.propTypes = {
-  text: PropTypes.string.isRequired,
-  header: PropTypes.string.isRequired,
+  deal: PropTypes.object.isRequired,
 };
 
 export default DealListItem;

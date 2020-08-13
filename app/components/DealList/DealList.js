@@ -8,9 +8,7 @@ const DealList = ({deals = DATA}) => (
   <View style={Style.listWrapper}>
     <FlatList
       data={deals}
-      renderItem={({item}) => (
-        <DealListItem header={item.name} text={item.address} />
-      )}
+      renderItem={({item}) => <DealListItem deal={item} />}
     />
   </View>
 );
